@@ -6,7 +6,7 @@ entity my_rom is
   port(
     clk : in std_logic;
     yaddr : in std_logic_vector(6 downto 0); -- 16 words total
-	xaddr : in std_logic_vector(7 downto 0); -- 16 words total
+    xaddr : in std_logic_vector(7 downto 0); -- 16 words total
     data : out std_logic_vector(1 downto 0) -- 6-bit words, RRGGBB
   );
 end;
