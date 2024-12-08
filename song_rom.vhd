@@ -4,7 +4,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
-entity songROM is
+entity song_rom is
     generic(
         ADDR_WIDTH : natural := 9;
         WORD_SIZE : natural := 4 
@@ -14,11 +14,11 @@ entity songROM is
         addr : in std_logic_vector(ADDR_WIDTH - 1 downto 0);
         data : out std_logic_vector(WORD_SIZE - 1 downto 0)
     );
-end songROM;
+end song_rom;
 -- Notes: r- 0000, f- 0001, G- 0010, g- 0011, A- 0100, a- 0101, B- 0110, C- 0111, c- 1000, D- 1001, d- 1010, E- 1011, hF- 1100, hf- 1101, hG- 1110, hA- 1111
 -- We want to transpose this, so the actual keys being used for each number are:
 -- (skip C), C# 1, D 2, D# 3,  E 4, F 5, F# 6, G 7, G# 8, A 9, A# 10, B 11, high C 12, high C# 13, (skip high D), high D# 14, high E 15
-architecture synth of songROM is
+architecture synth of song_rom is
 begin
     process (clk) begin
         if rising_edge(clk) then
