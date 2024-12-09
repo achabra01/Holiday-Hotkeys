@@ -1,0 +1,37 @@
+// Notes for keys: no hg or F?
+// We want to transpose this, so the actual keys being used for each number are:
+// (skip C), C# 1, D 2, D# 3,  E 4, F 5, F# 6, G 7, G# 8, A 9, A# 10, B 11, high C 12, high C# 13, (skip high D), high D# 14, high E 15
+! r f G g A a B C c D d E hF hf hG hA
+4hG 4.hG 4.hG 4.hG
+4.hG 4.hA 8/hG 8/E 4.C
+4.D 4.E 8/D 8/B 4.A
+1/G 
+4G 8/A 8/B 8/C 8/D 8/E 8/hF
+4.hG 4.hA 8/hG 8/E 8/D 8/C
+4.D 8/D 8/E 8/D 8/C 4.A
+1/C
+4.C 4.G 4.G 4.G
+4.G 4.A 8/hG 8/E 4.C
+4.D 4.E 8/D 8/B 4.A
+1/G 
+4G 8/A 8/B 8/C 8/D 8/E 8/hF
+4.hG 4.hA 8/hG 8/E 8/D 8/C
+4.D 8/D 8/E 8/D 8/C 4.A
+1/C
+4C 2r 8/g 8/A
+4.E 8/g 8/A 4.E 8/g 8/A
+4.E 4f 2/d
+4r 4/E 8/d 8/B 4/g
+1c
+4r 4/d 8/c 8/A 8/f 8A
+4/c 4/E 4/d 4f
+1/B
+2B 4r 8/f 8/G
+4D 8/f 8/G 4D 8/f 8/G
+4D 4E 2/c
+4r 4/D 8/c 8/A 4/f
+1/B
+4r 4.D 8/A 8.G 4.D
+4.G 8.A 8.D 4.A 8.G 8.d
+8.G 8.A 4.D 4.G 4.D
+// 4 measures before C
