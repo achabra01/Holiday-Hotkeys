@@ -5,7 +5,7 @@ use IEEE.numeric_std.all;
 entity square is
     port(
         clk : in std_logic;
-        length : in std_logic_vector(15 downto 0);
+        lngth : in std_logic_vector(15 downto 0);
         output : out std_logic
     );
 end square;
@@ -15,12 +15,12 @@ architecture synth of square is
     signal low : unsigned(16 downto 0);
     signal high : unsigned(16 downto 0);
 begin
-    low <= unsigned('0' & length);
-    high <= unsigned(length & '0');
+    low <= unsigned('0' & lngth);
+    high <= unsigned(lngth & '0');
     process (clk) begin
         if rising_edge(clk) then
             count <= count + 1;
-            if NOR length then -- if length is 0000
+            if NOR lngth then -- if length is 0000
                 output <= '0';
             else
                 output <= '1' when (count >= low) else '0';

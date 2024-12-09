@@ -1,3 +1,4 @@
+
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
@@ -5,32 +6,46 @@ use IEEE.numeric_std.all;
 entity clock_divider is
 	port(
 		clk : in std_logic; -- 25.175 MHz from PLL
-		midi_clk : out std_logic; -- 31.25 kHz for communication with keyboard
+		VSYNC : in std_logic; -- 60 Hz
 		sample_clk : out std_logic; -- 48 kHz for Paul
-		note_counter : out unsigned(9 downto 0) -- 35 Hz counter for ~1000 16th notes
+		nes_clk : out std_logic; --83.3 kHz for NES Controller
+		note_counter : out unsigned(13 downto 0) -- 6 Hz counter for ~1000 16th notes
+		--sync_counter : out unsigned(13 downto 0)
 	);
 end;
 
 architecture synth of clock_divider is 
 
 -- Counters used to generate slower clocks
-signal midi_count : unsigned(10 downto 0);
-signal sample_count : unsigned(10 downto 0);
-signal note_timing : unsigned(20 downto 0);
+signal sample_count : unsigned(9 downto 0);
+signal nes_count : unsigned(8 downto 0);
+signal note_timing : unsigned(22 downto 0);
+--signal sync_timing : unsigned(1 downto 0);
+
 
 begin
-	process (clk) is 
-	begin
+	process (clk) begin
 		if rising_edge(clk) then
 			-- Increment and reset counters at the correct intervals to create new clocks
-			midi_count <= "00000000000" when midi_count = "10110010100" else midi_count + 1; 
-			sample_count <= "00000000000" when sample_count = "10000011001" else sample_count  + 1;
-			note_timing <= "000000000000000000000" when sample_count = "101011111001101101011" else note_timing + 1;
+			sample_count <= "0000000000" when sample_count = "1000001100" else sample_count  + 1;
+			nes_count <= "000000000" when nes_count = "100101110" else nes_count + 1;
+			--note_timing <= "000000000000000000000" when note_timing = "111011000110010011010" else note_timing + 1;
+			--note_timing <= "0000000000000000000000" when note_timing = "0111011000110010011010" else note_timing + 1;
+			--note_counter <= note_counter + 1 when note_timing = "0000000000000000000001" else note_counter;
+			--note_timing <= "000000000000000000000" when note_timing = "1110110001100100110100" else note_timing + 1;
+			note_timing <= "00000000000000000000000" when note_timing = "00000111011000110010011" else note_timing + 1;
+			note_counter <= note_counter + 1 when note_timing = "00000000000000000000001" else note_counter;
 		end if;
 	end process;
-	
+	--process (VSYNC) begin
+		--if rising_edge(VSYNC) then
+			--sync_timing <= sync_timing + 1;
+		--end if;
+	--end process;
+		
+			--sync_counter <= sync_counter + 1 when sync_timing = 2d"2" else sync_counter;
 	-- Assign output clocks
-	sample_clk <= '1' when sample_count >= "01000001100" else '0';
-	midi_clk <= '1' when midi_count >= "01011001010" else '0';
-	note_counter <= note_counter + 1 when note_timing >= "010101111100110110101" else note_counter;
+	sample_clk <= '1' when sample_count >= "0100000110" else '0';
+	nes_clk <= '1' when nes_count >= "010010111" else '0';
+
 end;

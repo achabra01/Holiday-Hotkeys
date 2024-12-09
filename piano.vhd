@@ -105,7 +105,8 @@ process (col) begin
 		-- key 10
 		elsif row >= 254 and row < 282 then
 			flat_area <= "111111";	
-		-- key 11
+			
+		-- key 11
 		elsif row >= 282 and row < 310 then
 			flat_area <= "000000";	
 			
@@ -140,7 +141,7 @@ process (col) begin
 	
 		-- background
 		if col < 511 then
-			rgb <= "110000";
+			rgb <= "100000";
 		elsif col < 591 then
 			rgb <= flat_area;
 		else
