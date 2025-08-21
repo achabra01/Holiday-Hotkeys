@@ -1,0 +1,3 @@
+My fork of my final project for ES4 Intro to Digital Logic Circuits. The entire project was built on an UPduino v3.1 development board which uses an ICE40UP5K FPGA and
+used an NES controller for player input and a speaker for playing music. The finished project is in the branch finished_v3 NOT main. For further reading, here is the link
+to the full writeup my partners and I wrote for this project: https://docs.google.com/document/d/1glzkg_9BWLf4pqLmBqVAd1jxngCAzXb_Jm9HZ_eSQck/edit?usp=sharing
